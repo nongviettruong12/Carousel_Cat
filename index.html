@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatic Image Carousel</title>
+    <style>
+        .carousel {
+            width: 300px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            margin: 0 auto;
+        }
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-images img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel">
+        <div class="carousel-images">
+            <img src="https://placecats.com/millie/300/150" alt="Millie">
+            <img src="https://placecats.com/neo/300/200" alt="Neo">
+            <img src="https://placecats.com/millie_neo/300/200" alt="Millie and Neo">
+            <img src="https://placecats.com/neo_banana/300/200" alt="Neo with banana">
+            <img src="https://placecats.com/neo_2/300/200" alt="Neo again">
+            <img src="https://placecats.com/bella/300/200" alt="Bella">
+        </div>
+    </div>
+
+    <script>
+        const carouselImages = document.querySelector('.carousel-images');
+        const images = document.querySelectorAll('.carousel-images img');
+        let index = 0;
+        const imageWidth = 300;
+
+        function moveCarousel() {
+            index++;
+            if (index >= images.length) {
+                index = 0;
+            }
+            carouselImages.style.transform = `translateX(${-index * imageWidth}px)`;
+        }
+
+        setInterval(moveCarousel, 3000); // Chuyển ảnh sau mỗi 3 giây
+    </script>
+</body>
+</html>
